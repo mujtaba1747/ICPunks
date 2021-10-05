@@ -12,33 +12,40 @@ This project is sponsored by the Dfinity Developer Grant Programme.
 
 ### Prerequisites
 
-- [Internet Computer SDK](https://sdk.dfinity.org)
+- [Internet Computer SDK] version 0.7.2 (https://sdk.dfinity.org)
 - [Node.js](https://nodejs.org), version >= 12
 - [Yarn](https://nodejs.org)
 - [Python](https://www.python.org)
 - [Vessel@0.6.0](https://github.com/dfinity/vessel/releases/tag/v0.6.0)
 - If you're using Ubuntu, ensure that vessel and dfx are installed for superuser too. (ie `sudo which dfx` and `sudo which vessel` should work)
-- If vessel is not installed for superuser, get it from https://github.com/dfinity/vessel/releases and put it in `/usr/local/bin` and do a `sudo chmod +x` on it
+- If vessel is not installed, use `./scripts/vessel-install.sh` or
+- Get it from https://github.com/dfinity/vessel/releases and put it in `/usr/local/bin` and do a `sudo chmod +x` on it
 
 ## Setup
 
 The first step to setup ICPunks locally is to clone this git repository:
 
-```shell
+Having dfx version 0.7.2 is important:
 
+```shell
+$ DFX_VERSION=0.7.2 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+$ dfx --version # check that version is 0.7.2
 $ git clone git@github.com:stopak/ICPunks.git
 $ cd ICPunks
 
 ```
 
 If you don't have vessel yet you can install it by running an install script included in this project:\
-This script did not work on ubuntu
 ```shell
 
 # Install vessel
-$ ./scripts/vessel-install.sh
+$ ./scripts/vessel-install.sh # This script gives error on ubuntu
 
 ```
+This script did not work on ubuntu
+
+In case it doesn't work: https://github.com/dfinity/vessel/releases 
+and put it in `/usr/local/bin` and do a `sudo chmod +x` on it
 
 Double-check you have [vessel](https://github.com/dfinity/vessel) installed at version 0.6.*, then clone this repository and navigate to the `ICPunks` directory
 
@@ -53,7 +60,7 @@ Install all dependencies for UI
 
 ```shell
 yarn # <- This installs packages from the lockfile for consistency
-sudo npm install
+npm install # not sure if this is needed
 ```
 
 Start a local Internet Computer replica.
